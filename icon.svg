@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 云 + 上下箭头：上传/下载到云端（中性图形，不含任何厂商商标） -->
+  <path d="M7.2 11.2C5.2 11.2 3.8 9.8 3.8 8.1C3.8 6.4 5.1 5.1 6.7 5C7.4 3.3 9.1 2.2 11 2.2C13.2 2.2 15 3.6 15.6 5.5C17.4 5.8 18.7 7.3 18.7 9.1C18.7 10.3 17.9 11.2 16.9 11.2Z"/>
+  <path d="M8 20V14.6"/>
+  <path d="M5.9 16.7 8 14.6 10.1 16.7"/>
+  <path d="M16 14.6V20.2"/>
+  <path d="M13.9 18.1 16 20.2 18.1 18.1"/>
+</svg>

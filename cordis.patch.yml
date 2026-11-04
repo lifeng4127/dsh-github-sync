@@ -1,0 +1,4 @@
+# dsh bundle patch：把本插件插入 profile 的层级栈
+- insert:
+    - id: dsh-github-sync
+      name: 'dsh-github-sync'
