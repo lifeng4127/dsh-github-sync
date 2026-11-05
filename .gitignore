@@ -4,3 +4,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 _write-probe
+
+# 切勿提交：npm 发布令牌、本地环境变量、证书
+.npmrc
+.env
+.env.*
+*.pem
