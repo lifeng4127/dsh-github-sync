@@ -104,6 +104,66 @@
 | 面板列出 0 条会话 | 该工作区确实没有会话，或目录解析异常 | 换个工作区看看；仍为空就点「诊断」→ 复制，把 **`平台`**、**`会话目录(应有)`**、**`sessions 根下 N 个目录`** 三行发出来 |
 | **macOS 上列表为空** | 该平台的会话目录名算法与插件不一致（Windows 上不会遇到） | 同上，把诊断里那三行发出来即可定位；插件有回退匹配，多数情况会自动恢复 |
 
+### 证书错误（`UNABLE_TO_VERIFY_LEAF_SIGNATURE`）
+
+**现象**：连接测试或上传时报 `网络失败：fetch failed（UNABLE_TO_VERIFY_LEAF_SIGNATURE）`，
+或者 `SELF_SIGNED_CERT_IN_CHAIN` / `unable to get local issuer certificate`。
+
+**原因**：你电脑上有软件在**解密 HTTPS**，它用自己的根证书替换了 GitHub 的真证书。
+
+中国大陆最常见的是：
+
+| 软件 | 典型特征 |
+|---|---|
+| SteamTools（Watt Toolkit / 瓦特工具箱） | 证书签发者 `CN=SteamTools Certificate, O=BeyondDimension` |
+| Fiddler / Charles | 抓包工具，默认开启 HTTPS 解密 |
+| 部分安全软件的「网页防护 / HTTPS 扫描」 | 名称里带安全、卫士、管家等 |
+
+浏览器能用是因为系统信任了它的根证书，但 DSH 用的 Node 只信任内置的 CA 列表，所以会拒绝。
+
+**三种解法，从简到繁：**
+
+**① 加进绕过列表（推荐）**
+
+打开那个软件的设置，找到「不使用代理的地址 / 跳过域名 / 绕过列表」，加上：
+
+```
+api.github.com
+github.com
+*.githubusercontent.com
+```
+
+**② 关掉它的 HTTPS 解密**
+
+SteamTools：关掉「GitHub 加速」或「网络加速」；
+抓包工具：关闭 HTTPS 解密 / 停止捕获；
+安全软件：关闭「HTTPS 扫描 / 网页防护」。
+
+**③ 让它信任你的环境（导出根证书）**
+
+适合你确实需要那个软件（比如它是你唯一的翻墙/加速手段）：
+
+```powershell
+# 1. 找到它的根证书并导出成 PEM
+$cert = Get-ChildItem Cert:\LocalMachine\Root, Cert:\CurrentUser\Root |
+  Where-Object { $_.Subject -match 'SteamTools' } | Select-Object -First 1
+$pem = "-----BEGIN CERTIFICATE-----`n" +
+  [Convert]::ToBase64String($cert.RawData, [Base64FormattingOptions]::InsertLineBreaks) +
+  "`n-----END CERTIFICATE-----`n"
+Set-Content -Path "$env:USERPROFILE\.dsh\proxy-ca.pem" -Value $pem -Encoding ascii
+
+# 2. 让 Node（也就是 DSH）信任它
+[Environment]::SetEnvironmentVariable('NODE_EXTRA_CA_CERTS', "$env:USERPROFILE\.dsh\proxy-ca.pem", 'User')
+```
+
+然后**完全退出 DSH 再打开**（环境变量只在新进程生效）。
+
+> ⚠️ 这等于让那张证书的持有者能解密 Node 的 HTTPS 流量。它本来就已经在解密你浏览器的流量了，
+> 所以是"延续既有信任"；卸载那个软件时记得撤掉：
+> `[Environment]::SetEnvironmentVariable('NODE_EXTRA_CA_CERTS', $null, 'User')`
+
+**怎么确认好了**：再点一次「测试连接」，看到「连接正常」即可。
+
 ---
 
 ## 七、令牌的轮换与撤销

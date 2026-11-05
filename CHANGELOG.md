@@ -31,6 +31,7 @@
 - 历史文件自动清理：超过 **100 天**的记录在启动时删一次，之后每天最多再清一次；坏行保留不误删。
 - 修正提交返回值里的 `firstCommit`：原先取的是"打种子之后的 ref"，空仓和非空仓都返回 false；现在返回真实的 `firstCommit`（进来时是否有分支）与 `seeded`（是否走了 Contents API 种子）。
 - **远端读取失败不再清空列表**：以前一次网络抖动会把右侧远端列清成空，看起来像"仓库里的数据没了"；现在会重试一次，仍失败则保留上次结果并在标题旁标「上次结果（读取失败）」，同时给出提示。
+- **证书错误给出可执行建议**：检测到 `UNABLE_TO_VERIFY_LEAF_SIGNATURE` / `SELF_SIGNED_CERT_IN_CHAIN` / `unable to get local issuer certificate` 时，不再无意义重试 3 次，而是立即报错并提示「本机有软件在解密 HTTPS」，附三种解法（绕过列表 / 关闭解密 / 配置 `NODE_EXTRA_CA_CERTS`）。中国大陆用户装 SteamTools、Watt Toolkit、Fiddler 或带 HTTPS 扫描的安全软件时最常撞到。
 - 诊断新增 `平台`、`会话目录(应有)`、`会话目录命中`、`sessions 根下 N 个目录` 四行：macOS 上若列表为空，用户复制诊断即可定位，不用描述现象。
 
 ### 测试

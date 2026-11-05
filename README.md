@@ -229,6 +229,7 @@ manifest.json                    权威索引：会话 id → 路径、原始 cw
 | 现象 | 原因 / 处理 |
 |---|---|
 | 连接失败 · `fetch failed` | 宿主到 `api.github.com` 不通（代理/防火墙/DNS）。先确认 `HTTPS_PROXY` 生效，再重试 |
+| `UNABLE_TO_VERIFY_LEAF_SIGNATURE` / `SELF_SIGNED_CERT_IN_CHAIN` | 本机有软件在解密 HTTPS（SteamTools/Watt Toolkit、Fiddler、安全软件的网页防护）。把 `api.github.com` 加进它的绕过列表，或按 [TUTORIAL 证书错误](TUTORIAL.md#证书错误unable_to_verify_leaf_signature) 处理 |
 | `Git Repository is empty` 409 | 空仓库，首提交走 Contents API；若反复出现，先在网页建一个 README |
 | `its cwd resolves to '...'` | 同一会话 id 已属于别的工作区，不能重复挂载。这是宿主在保护你 |
 | 预览里大量 `blocked` | 命中密钥规则或超过 10MB；超限可改 `limits` |
