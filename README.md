@@ -4,9 +4,13 @@
 
 它补的是 DSH 本地版没有云端存储这个缺口：没有服务器、没有账号体系，只有你的仓库和一串令牌。
 
+![GitHub 同步：把 DSH 会话同步到私有仓库，换台电脑接着干](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/hero.png)
+
 ---
 
 ## 它做什么
+
+![插件面板：左侧远端仓库，右侧本地会话，状态徽标一眼看清](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/panel.png)
 
 | 能力 | 说明 |
 |---|---|
@@ -25,6 +29,20 @@
 - **切屏不丢**：传输状态存在宿主进程里，面板切走再回来会**自动重新接上**进度条；没确认的预览也会恢复出来。
 - **面板状态会保留**：工作区选择、勾选框、开关都记在浏览器本地，切走再回来（甚至刷新页面）都还在。
 
+![功能速览](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/features.png)
+
+---
+
+## 它是怎么工作的
+
+![工作原理：本机 → 私有仓库 → 另一台电脑](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/flow.png)
+
+会话在磁盘上**就是一个文件**（`session.v4.jsonl.zstd`），所以同步不需要任何服务端：
+
+1. **上传**：会话文件 + 它引用的附件 + 更新后的索引，合成**一次提交**推到仓库
+2. **下载**：拉回文件后改写头帧里的 `cwd`（其余帧字节原样保留），再注册进本机项目列表——切过去就能继续聊
+3. **多设备**：每台机器上传前先合并远端索引，所以不会互相覆盖记录
+
 ---
 
 ## 安装
@@ -38,6 +56,8 @@
 3. 或者在 profile 的 `package.json` 里加 `"dsh-github-sync": "link:<路径>"`，并把它加进 `dsh.profile.bundles`
 
 装完左侧边栏会出现「GitHub 同步」图标，点开是面板。
+
+![三步开始：建私有仓 → 填令牌 → 上传/下载](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/quickstart.png)
 
 > **大陆网络**：如果 npm 官方源很慢，用镜像装：
 > `npm install dsh-github-sync --registry=https://registry.npmmirror.com`

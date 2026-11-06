@@ -4,7 +4,11 @@ Sync your DeepSeek Harness (DSH) sessions and workspace files to a **private Git
 
 > Local DSH has no cloud. This plugin gives it one, using a repo you already own.
 
+![GitHub Sync — move DSH sessions to a private repo, continue on another machine](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/hero.png)
+
 ## What it does
+
+![The panel: remote repo on the left, local sessions on the right, status badges at a glance](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/panel.png)
 
 - **Sessions → repo**: upload selected conversations to `<project>/sessions/<id>.jsonl.zstd`.
 - **Repo → sessions**: download them back on another machine, with the session's `cwd` rewritten for that machine, then auto-attach to the workspace.
@@ -13,11 +17,25 @@ Sync your DeepSeek Harness (DSH) sessions and workspace files to a **private Git
 - **Manual by design**: every write is preview → confirm. Nothing uploads silently.
 - **Files/folders are opt-in**: disabled by default; enable it in settings if you want workspace files too.
 
+![Features at a glance](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/features.png)
+
+## How it works
+
+![How it works: this machine → private repo → another machine](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/flow.png)
+
+A session on disk is just a file (`session.v4.jsonl.zstd`), so no server is involved:
+
+1. **Upload** — the session file, the attachments it references, and the updated index go up as **one commit**.
+2. **Download** — the file is restored, the `cwd` inside its header frame is rewritten for this machine (every other frame stays byte-identical), and the session is attached to the workspace.
+3. **Multiple devices** — each device merges the remote index before uploading, so records are never silently overwritten.
+
 ## Install
 
 From the **DSH plugin market**: search `dsh-github-sync`, install, enable.
 
 From a **local checkout**: point DSH's plugin manager at this folder, or add the package to your profile's `dsh.profile.bundles`.
+
+![Three steps: create a private repo → add a token → upload / download](https://raw.githubusercontent.com/mount9527/dsh-github-sync/main/docs/quickstart.png)
 
 ## Configure
 
