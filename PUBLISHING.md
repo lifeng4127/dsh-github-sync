@@ -4,12 +4,12 @@
 
 ## 1. 元数据
 
-仓库地址已填好（`lifeng4127/dsh-github-sync`）：
+仓库地址已填好（`mount9527/dsh-github-sync`）：
 
 ```json
-"repository": { "type": "git", "url": "git+https://github.com/lifeng4127/dsh-github-sync.git" },
-"homepage": "https://github.com/lifeng4127/dsh-github-sync#readme",
-"bugs": { "url": "https://github.com/lifeng4127/dsh-github-sync/issues" }
+"repository": { "type": "git", "url": "git+https://github.com/mount9527/dsh-github-sync.git" },
+"homepage": "https://github.com/mount9527/dsh-github-sync#readme",
+"bugs": { "url": "https://github.com/mount9527/dsh-github-sync/issues" }
 ```
 
 已就位：`name` / `version` / `description` / `license` / `author` / `repository` /
@@ -150,7 +150,7 @@ CHANGELOG 有对应条目。
 
 | 步骤 | 结果 |
 |---|---|
-| 1 元数据 | repository / homepage / bugs 已填 `lifeng4127/dsh-github-sync` |
+| 1 元数据 | repository / homepage / bugs 已填 `mount9527/dsh-github-sync` |
 | 2 engines.dsh | `>=0.2.1-rc.5`；安装 0.5.0 无 `incompatible-version`，重启后 `/status` 返回 0.5.0 |
 | 3 打包 | `pnpm pack` 产出 64.6 KB / 24 文件，**不含 `tools/`** |
 | 4 单平台自检 | Windows 侧自动化部分由 `e2e --write` 覆盖（16/16）；UI 的 12 步待人工确认；**macOS 未验证** |

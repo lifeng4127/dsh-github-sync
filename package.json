@@ -1,17 +1,17 @@
 {
   "name": "dsh-github-sync",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "把 DSH 会话与工作区文件夹同步到私有 GitHub 仓，用于跨设备接力（Windows / macOS）。",
   "type": "module",
   "license": "MIT",
-  "author": "lifeng4127",
+  "author": "mount9527",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lifeng4127/dsh-github-sync.git"
+    "url": "git+https://github.com/mount9527/dsh-github-sync.git"
   },
-  "homepage": "https://github.com/lifeng4127/dsh-github-sync#readme",
+  "homepage": "https://github.com/mount9527/dsh-github-sync#readme",
   "bugs": {
-    "url": "https://github.com/lifeng4127/dsh-github-sync/issues"
+    "url": "https://github.com/mount9527/dsh-github-sync/issues"
   },
   "keywords": [
     "dsh",

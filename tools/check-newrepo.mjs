@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 
 const CRED = 'C:\\Users\\14507\\.dsh\\.credentials.yaml';
-const REPO = process.env.CHECK_REPO || 'lifeng4127/deepseek-harness-work1';
+const REPO = process.env.CHECK_REPO || 'mount9527/deepseek-harness-work1';
 
 let token = null;
 try {

@@ -19,7 +19,7 @@ export const name = 'dsh-github-sync';
 
 export const inject = ['webServer', 'credentials', 'workspaceRegistry', 'tools'];
 
-const VERSION = '0.5.0';
+const VERSION = '0.5.1';
 const PREFIX = '/dsh-github-sync';
 const DATA_DIR = join(dshHome(), 'github-sync');
 const STATE_FILE = join(DATA_DIR, 'state.json');

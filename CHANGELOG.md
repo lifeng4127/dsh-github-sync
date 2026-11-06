@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.1
+
+GitHub 用户名从 `lifeng4127` 改为 `mount9527` 后的元数据修正。
+
+- `package.json` 的 `repository` / `homepage` / `bugs` / `author` 指向新地址。
+- 文档（README、TUTORIAL、PUBLISHING、SUBMIT）与市场提交文件里的旧用户名一并更新。
+- 市场提交文件改名为 `mount9527__dsh-github-sync.yml`。
+- 本地 git 远程地址更新为 `https://github.com/mount9527/dsh-github-sync.git`。
+
+> GitHub 对旧地址仍会 301 重定向，但重定向不是永久的（旧用户名被他人注册后失效），所以发一版修正元数据是必要的。
+
 ## 0.5.0
 
 发布前的安全与跨平台加固。

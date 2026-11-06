@@ -62,9 +62,9 @@
 1. 打开 DSH，左侧栏点「**GitHub 同步**」
 2. 点右上 **⚙ 设置**
 3. **仓库**：填下面任意一种写法，插件都认
-   - `你的用户名/仓库名`，例如 `lifeng4127/dsh-sync`
-   - `https://github.com/lifeng4127/dsh-sync.git`
-   - `https://github.com/lifeng4127/dsh-sync`
+   - `你的用户名/仓库名`，例如 `mount9527/dsh-sync`
+   - `https://github.com/mount9527/dsh-sync.git`
+   - `https://github.com/mount9527/dsh-sync`
 4. **分支**：默认 `main`，不用改
 5. **访问令牌**：粘贴刚才那串 `github_pat_…`
 6. 点 **保存**，再点 **测试连接**

@@ -18,7 +18,7 @@ window.__ModuleLoader__.load({
 
     const NS = 'dsh-github-sync';
     const PANEL_ID = 'dsh-github-sync';
-    const VERSION = '0.5.0';
+    const VERSION = '0.5.1';
     const PREFIX = '/dsh-github-sync';
 
     const ZH = {

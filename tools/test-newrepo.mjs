@@ -1,7 +1,7 @@
 // 空仓库首传验收：切到新仓 → 连接测试 → 首传（Contents API 打种子）→ 切回原仓
 const API = process.env.SYNC_BASE ? `${process.env.SYNC_BASE}/dsh-github-sync` : 'http://127.0.0.1:64202/dsh-github-sync';
 const CWD = 'E:\\ruanjianxiazai\\deepseek\\work';
-const NEW_REPO = 'https://github.com/lifeng4127/deepseek-harness-work1.git';
+const NEW_REPO = 'https://github.com/mount9527/deepseek-harness-work1.git';
 
 const post = async (p, b) => (await fetch(API + p, {
   method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(b ?? {}),

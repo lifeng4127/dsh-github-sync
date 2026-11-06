@@ -9,7 +9,7 @@
 | 本地 git 仓库 | `main` 分支，3 个提交，工作区干净 |
 | 与远程的关系 | 已合并远程 `Initial commit`，**推送是快进**（不会覆盖你的历史） |
 | 仓库级 git 配置 | TLS 走 OpenSSL 后端、代理 `127.0.0.1:7892`、`credential.helper=manager` |
-| 市场提交文件 | [`submit/lifeng4127__dsh-github-sync.yml`](submit/lifeng4127__dsh-github-sync.yml)（格式已对照官方样例） |
+| 市场提交文件 | [`submit/mount9527__dsh-github-sync.yml`](submit/mount9527__dsh-github-sync.yml)（格式已对照官方样例） |
 | 包与文档 | 26 个文件 / 72 KB，含 README、README.en、TUTORIAL、RELEASE_NOTES、LICENSE、PUBLISHING |
 
 ## 二、阻塞 1：推送需要你的 GitHub 身份
@@ -25,7 +25,7 @@ git push -u origin main
 
 ```
 remote: ...
-To https://github.com/lifeng4127/dsh-github-sync.git
+To https://github.com/mount9527/dsh-github-sync.git
    6178f06..5cb8cde  main -> main
 ```
 
@@ -35,7 +35,7 @@ To https://github.com/lifeng4127/dsh-github-sync.git
 2. 执行（令牌只在本次命令里出现，不要写进 config）：
 
 ```powershell
-git push https://lifeng4127:<你的令牌>@github.com/lifeng4127/dsh-github-sync.git main:main
+git push https://mount9527:<你的令牌>@github.com/mount9527/dsh-github-sync.git main:main
 ```
 
 ## 三、阻塞 2：插件市场要求"仓库满 1 天"
@@ -55,9 +55,9 @@ git push https://lifeng4127:<你的令牌>@github.com/lifeng4127/dsh-github-sync
 
 1. **给仓库加 topic**：仓库页右侧 ⚙ → Topics 填 `dsh-plugin` → 保存
 2. **Fork** [awesome-dsh-plugin/awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
-3. **新增文件** `data/plugins/lifeng4127__dsh-github-sync.yml`，内容就是 `submit/` 下那份，然后提 PR
+3. **新增文件** `data/plugins/mount9527__dsh-github-sync.yml`，内容就是 `submit/` 下那份，然后提 PR
 
-PR 标题建议：`Add lifeng4127/dsh-github-sync`
+PR 标题建议：`Add mount9527/dsh-github-sync`
 
 合并后站点与市场会自动收录（官方说通常一天内生效）。
 
